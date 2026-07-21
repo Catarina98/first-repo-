@@ -1,48 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Our Menu - Delicious Eats</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the delicious menu at Delicious Eats - Appetizers, Main Courses, Desserts, and Beverages crafted with seasonal ingredients.">
+    <title>Our Menu - Delicious Eats Restaurant</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+    <a href="#content" class="skip-link">Skip to main content</a>
+
     <header id="header">
         <h1>Our Menu</h1>
-        <img src="images/logo.jpg" height="200">
+        <img src="images/logo.jpg" 
+             srcset="images/logo.jpg 600w" 
+             sizes="(max-width: 600px) 120px, 160px" 
+             alt="Delicious Eats Restaurant Logo" 
+             class="logo-img">
     </header>
-    <nav id="nav">
-        <a href="index.html">Home</a> |
-        <a href="menu.html">Menu</a> |
-        <a href="#">Contact</a>
-    </nav>
-    <main id="content">
-        <div class="grid" border="0">
-            <div class="grid-cell">
-                    <h3>Appetizers</h3>
-                    <p>Delicious starters to begin your meal.</p>
-                    <img src="images/dish1.jpg">
-            </div>
-            <div class="grid-cell">
-                <h3>Main Courses</h3>
-                <p>Satisfying entrees to delight your palate.</p>
-                <img src="images/dish2.jpg">
-            </div>
 
+    <nav id="nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" aria-current="page">Menu</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="content" tabindex="-1">
+        <section class="menu-section" aria-labelledby="menu-heading">
+            <h2 id="menu-heading" class="visually-hidden">Menu Categories</h2>
             
-            <div class="grid-cell">
-                <h3>Desserts</h3>
-                <p>Sweet treats to finish your dining experience.</p>
-                <img src="images/dish3.jpg">
+            <div class="grid">
+                <article class="grid-cell">
+                    <h2>Appetizers</h2>
+                    <p>Delicious starters crafted with fresh ingredients to begin your meal.</p>
+                    <img src="images/dish1.jpg" 
+                         srcset="images/dish1.jpg 600w" 
+                         sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 25vw" 
+                         alt="Fresh starter salad with organic greens and vibrant house dressing" 
+                         loading="lazy">
+                </article>
+
+                <article class="grid-cell">
+                    <h2>Main Courses</h2>
+                    <p>Satisfying, chef-inspired entrees designed to delight your palate.</p>
+                    <img src="images/dish2.jpg" 
+                         srcset="images/dish2.jpg 600w" 
+                         sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 25vw" 
+                         alt="Gourmet grilled main course served with roasted seasonal vegetables" 
+                         loading="lazy">
+                </article>
+
+                <article class="grid-cell">
+                    <h2>Desserts</h2>
+                    <p>Sweet house-made treats to perfectly finish your dining experience.</p>
+                    <img src="images/dish3.jpg" 
+                         srcset="images/dish3.jpg 600w" 
+                         sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 25vw" 
+                         alt="Artisanal dessert plate topped with fresh berries and chocolate glaze" 
+                         loading="lazy">
+                </article>
+
+                <article class="grid-cell">
+                    <h2>Beverages</h2>
+                    <p>A curated selection of cold drinks, milkshakes, and hot beverages.</p>
+                    <img src="images/dish4.jpg" 
+                         srcset="images/dish4.jpg 600w" 
+                         sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 25vw" 
+                         alt="Refreshing signature ice-cold beverage garnished with fruit" 
+                         loading="lazy">
+                </article>
             </div>
-            
-            <div class="grid-cell">
-                <h3>Beverages</h3>
-                <p>A selection of drinks to complement your meal.</p>
-                <img src="images/dish4.jpg">
-            </div>
-        </div>
+        </section>
     </main>
+
     <footer id="footer">
-        <p>&copy; 2023 Delicious Eats</p>
+        <p>&copy; 2023 Delicious Eats. All rights reserved.</p>
     </footer>
 </body>
 </html>

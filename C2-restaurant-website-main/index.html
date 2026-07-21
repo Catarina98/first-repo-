@@ -1,40 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Delicious Eats Restaurant</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Delicious Eats Diner - Classic American comfort food with a modern twist in Queen Anne since 1962.">
+    <title>Delicious Eats Restaurant - Classic Comfort Food</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+    <a href="#content" class="skip-link">Skip to main content</a>
+
     <header id="header">
         <h1>Welcome to Delicious Eats</h1>
-        <img src="images/logo.jpg" height= "200">
+        <img src="images/logo.jpg" 
+             srcset="images/logo.jpg 600w" 
+             sizes="(max-width: 600px) 120px, 160px" 
+             alt="Delicious Eats Restaurant Logo" 
+             class="logo-img">
     </header>
-    <nav id="nav">
-        <a href="index.html">Home</a> |
-        <a href="menu.html">Menu</a> |
-        <a href="#">Contact</a>
+
+    <nav id="nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
     </nav>
-    <main id="content">
-        <section class="left">
-            <h2>About Us</h2>
+
+    <main id="content" tabindex="-1">
+        <section class="left" aria-labelledby="about-heading">
+            <h2 id="about-heading">About Us</h2>
             <p>A Queen Anne neighborhood fixture since 1962, Delicious Eats Diner serves classic American comfort food with a modern twist. Our vintage chrome and vinyl booths set the scene for innovative dishes that honor traditional diner culture while embracing contemporary flavors.</p>
-            <p>Under Chef Kai's leadership, we craft beloved classics using locally sourced, seasonal ingredients from our Pacific Northwest neighbors. From our signature cheeseburger to house-made clam chowder, each dish balances comfort with quality. Our menu features both traditional favorites and creative plant-based options, ensuring there's something for everyone.<p>
+            <p>Under Chef Kai's leadership, we craft beloved classics using locally sourced, seasonal ingredients from our Pacific Northwest neighbors. From our signature cheeseburger to house-made clam chowder, each dish balances comfort with quality. Our menu features both traditional favorites and creative plant-based options, ensuring there's something for everyone.</p>
             <p>More than just a restaurant, we're a community gathering place where good food meets warm hospitality. Stop by for a vanilla milkshake, bring friends for dinner, or treat yourself to a slice of our famous key lime pie – there's always a seat waiting for you at Delicious Eats.</p>
 
-            <img src="images/dining_room.jpg" alt="restaurant with chairs" width = "390">
-            </section>
-        <aside class="right">
-            <h2>Our Hours</h2>
-            <p>Monday - Friday: 9am - 9pm<br />Saturday - Sunday: 10am - 10pm</p>
-            <hr />
+            <img src="images/dining_room.jpg" 
+                 srcset="images/dining_room.jpg 800w" 
+                 sizes="(max-width: 768px) 100vw, 550px" 
+                 alt="Cosy dining room with classic vintage booths and wooden tables" 
+                 loading="lazy">
+        </section>
+
+        <aside class="right" aria-labelledby="hours-heading">
+            <h2 id="hours-heading">Our Hours</h2>
+            <p class="hours-list">
+                Monday - Friday: 9am - 9pm<br>
+                Saturday - Sunday: 10am - 10pm
+            </p>
+            <hr>
             <p>We invite you to become part of our story. Join us at Delicious Eats Diner, where yesterday's charm meets today's flavors in every bite.</p>
 
-            <img src="images/chef.png" alt="the chef welcomes you" width = "390">
+            <img src="images/chef.png" 
+                 srcset="images/chef.png 800w" 
+                 sizes="(max-width: 768px) 100vw, 320px" 
+                 alt="Chef Kai smiling warmly behind the diner counter" 
+                 loading="lazy">
         </aside>
     </main>
+
     <footer id="footer">
-        <p>&copy; 2023 Delicious Eats</p>
+        <p>&copy; 2023 Delicious Eats. All rights reserved.</p>
     </footer>
 </body>
 </html>

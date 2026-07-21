@@ -1,63 +1,405 @@
+/* ==========================================================================
+   1. DESIGN TOKENS & ROOT VARIABLES
+   ========================================================================== */
+:root {
+    /* Color Palette - WCAG 2.1 AA Compliant (Contrast Ratios > 4.5:1) */
+    --primary-bg: #7B1E2B;
+    /* Deep Burgundy for Header/Footer (Contrast ratio with white: ~8.5:1) */
+    --primary-text: #FFFFFF;
+    /* White text on dark primary elements */
+    --nav-bg: #212529;
+    /* Dark Charcoal for Navigation (Contrast ratio with white: > 14:1) */
+    --nav-text: #FFFFFF;
+    /* White text for Nav links */
+    --nav-hover: #F4A261;
+    /* Warm Coral Accent for link hover states */
+    --nav-active-border: #F4A261;
+    /* Active link indicator */
+    --body-bg: #FDFBF7;
+    /* Soft Warm Cream background */
+    --card-bg: #FFFFFF;
+    /* Pure White for menu & content cards */
+    --text-color: #222222;
+    /* Charcoal for primary body copy (Contrast ratio > 15:1) */
+    --text-muted: #555555;
+    /* Muted text for secondary information */
+    --border-color: #E2E8F0;
+    /* Light grey divider borders */
+    --focus-ring: #2563EB;
+    /* High contrast blue focus ring for keyboard navigation */
+    --focus-ring-alt: #FFB703;
+    /* High contrast amber focus ring for dark backgrounds */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    /* Typography */
+    --font-heading: 'Georgia', 'Times New Roman', serif;
+    --font-body: 'Arial', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================================================
+   2. BASE & RESET STYLES
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-color: #ffffff;
-    font-family: Arial, sans-serif;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-#header, #footer {
-    background-color: #e17b7b;
-    color: #000000;
+/* Base Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--text-color);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+}
+
+h1 {
+    font-size: 2.25rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+    color: var(--primary-bg);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* ==========================================================================
+   3. ACCESSIBILITY & FOCUS STYLES
+   ========================================================================== */
+/* Skip Link - Hidden visually until focused via keyboard Tab */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 1000;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    font-weight: bold;
+    text-decoration: none;
+    border: 3px solid var(--focus-ring-alt);
+    border-radius: 4px;
+    transition: top 0.2s ease-in-out;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+/* Interactive Elements Keyboard Focus States */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+#nav a:focus-visible {
+    outline: 3px solid var(--focus-ring-alt);
+    outline-offset: 4px;
+}
+
+/* Target main container focus when skip link is activated */
+#content:focus {
+    outline: none;
+}
+
+/* ==========================================================================
+   4. HEADER & NAVIGATION
+   ========================================================================== */
+#header {
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
     text-align: center;
-    padding: 50px;
+    padding: 2.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
 }
 
-#footer {
-    clear: both;
-    padding: 1px;
+#header h1 {
+    color: var(--primary-text);
+    margin-bottom: 0;
+    font-size: 2.5rem;
+    letter-spacing: 0.5px;
 }
 
+.logo-img {
+    max-height: 160px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+}
+
+/* Navigation Bar */
 #nav {
-    background-color: #444444;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
+    background-color: var(--nav-bg);
+    padding: 0.75rem 1rem;
+}
+
+#nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 #nav a {
-    color: #ffffff;
-    margin: 0 15px;
+    color: var(--nav-text);
     text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
+#nav a:hover {
+    color: var(--nav-hover);
+    text-decoration: underline;
+}
+
+#nav a[aria-current="page"] {
+    border-bottom-color: var(--nav-active-border);
+    color: var(--nav-hover);
+}
+
+/* ==========================================================================
+   5. MAIN CONTENT LAYOUT (FLEXBOX)
+   ========================================================================== */
 #content {
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+    flex: 1;
     display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    align-items: flex-start;
 }
 
-.grid{
-    display: grid;
+/* Main Section */
+#content section.left {
+    flex: 2 1 550px;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
 }
 
-.grid img {
+#content section.left img {
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Sidebar / Aside */
+#content aside.right {
+    flex: 1 1 320px;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+}
+
+#content aside.right img {
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.hours-list {
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   6. MENU GRID LAYOUT (CSS GRID)
+   ========================================================================== */
+.menu-section {
     width: 100%;
 }
 
-@media screen and (max-width: 576px) {
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.75rem;
+    margin-top: 1.5rem;
+}
+
+.grid-cell {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-cell:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.grid-cell h2 {
+    font-size: 1.35rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0.5rem;
+}
+
+.grid-cell p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.grid-cell img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* ==========================================================================
+   7. FOOTER STYLES
+   ========================================================================== */
+#footer {
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    text-align: center;
+    padding: 1.75rem 1rem;
+    margin-top: auto;
+}
+
+#footer p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+/* Mobile Devices (< 768px) */
+@media screen and (max-width: 767px) {
+    #header {
+        padding: 1.75rem 1rem;
+    }
+
+    #header h1 {
+        font-size: 1.85rem;
+    }
+
+    .logo-img {
+        max-height: 120px;
+    }
+
+    #nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    #nav a {
+        width: 100%;
+        justify-content: center;
+        padding: 0.6rem 1rem;
+    }
+
     #content {
         flex-direction: column;
-        text-align: center;
+        padding: 1.5rem 1rem;
+        gap: 1.5rem;
+    }
+
+    #content section.left,
+    #content aside.right {
+        flex: 1 1 100%;
+        width: 100%;
+        padding: 1.25rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
 }
 
-@media screen and (min-width: 576px) {
-    .grid {
-        grid-template-columns: 1fr 1fr;
+/* Tablet Devices (768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    #content {
+        gap: 1.75rem;
+        padding: 2rem 1.25rem;
     }
-}
 
-
-
-@media screen and (min-width: 769px) {
     .grid {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
